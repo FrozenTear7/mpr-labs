@@ -1,0 +1,3 @@
+Small problem: 100000
+Medium problem: 300000000
+Large problem: 1000000000
