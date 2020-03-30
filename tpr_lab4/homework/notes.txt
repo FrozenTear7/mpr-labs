@@ -1,3 +1,6 @@
 Small problem: 100000
 Medium problem: 300000000
-Large problem: 1000000000
+Large problem: 6000000000
+
+srun --nodes=1 --ntasks=12 --time=08:00:00 --partition=plgrid --account=plgfrozentear72020a --pty /bin/bash
+srun --nodes=1 --ntasks=12 --constraint="intel" --exclusive --time=06:00:00 --partition=plgrid --account=plgmpr20zeus --pty /bin/bash

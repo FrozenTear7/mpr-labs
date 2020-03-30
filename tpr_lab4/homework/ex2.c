@@ -26,10 +26,10 @@ int main(int argc, char **argv)
     int world_size;
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
-    int countInside = 0;
-    int countProcessInside = 0;
+    long countInside = 0;
+    long countProcessInside = 0;
     long nOfPoints = atol(argv[1]);
-    int i;
+    long i;
 
     MPI_Barrier(MPI_COMM_WORLD);
 
