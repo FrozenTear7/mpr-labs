@@ -1,0 +1,10 @@
+output01
+output02
+*.egg0info
+venv
+build
+dist
+mpr_lab01.egg-info
+.idea
+/text/
+/mpr/word-count/

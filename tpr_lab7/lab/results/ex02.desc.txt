@@ -1,0 +1,5 @@
+Pracując na Windowsie udało mi się uruchomić Mastera i Workera, lecz skrypt spark-submit nic nie robił i po wielu próbach
+do niczego nie udało mi się dojść, zatem zadanie uruchomiłem jak w sposobie pierwszym.
+
+W zadaniu funkcja parallelize tworzy równoległe obliczenia - N = 100000 razy losujemy punkt i sprawdzamy czy zawiera się
+w okręgu. Range w pythonie3 zachowuje się jak dawny xrange z pythona2, więc używam obecnego rozwiązania.

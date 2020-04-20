@@ -1,0 +1,2 @@
+Wczytywanie danych z jednego pliku może być nieefektywne zwłaszcza przy dużym zestawie danych jak w puma.log, gdyż
+będziemy ograniczaniu przez I/O speed odczytu gdzie prędkość przetwarzania może być szybsza i będzie oczekiwać na kolejne dane.

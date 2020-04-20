@@ -1,0 +1,11 @@
+output01
+output02
+output03
+*.egg0info
+venv
+build
+dist
+build
+text
+mpr_lab01.egg-info
+.idea
