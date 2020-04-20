@@ -1,0 +1,6 @@
+Parametry LinearRegression:
+1) maxIter - maksymalna liczba iteracji, dokładność wyników wzrasta wraz z ilością,
+zadowalające wyniki dla około 50+, domyślnie 100
+2) tol - tolerancja konwergencji, domyślnie 1e-6, im mniejsza wartość, tym większa dokładność, kosztem większej ilości iteracji
+3) regParam - parametr regularyzacji, domyślnie 0.0, im mniejsza wartość tym lepsze wyniki, zapobiega overfittingowi
+4) fitIntercept - False/True wartości, jeśli jest używane, pozwala na lepsze przewidywanie wyników testowych (zwiększenie dokładności o ok. 2 miejsca)

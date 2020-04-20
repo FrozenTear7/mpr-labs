@@ -1,0 +1,10 @@
+Coefficients: [1.999184025105587]
+Intercept: 1.015376026916595
+RMSE: 0.009996
+
+Wersja z szumem, te same parametry:
+Coefficients: [2.001578675635892]
+Intercept: 0.8980727085079426
+RMSE: 0.602050
+
+Szumy dość znacznie wpłynęły na błąd średniokwadratowy - zmienił się o aż 2 miejsca po przecinku.

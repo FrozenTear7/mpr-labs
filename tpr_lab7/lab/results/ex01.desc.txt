@@ -1,0 +1,6 @@
+Aby posortować zliczone słowa po ilość wystąpień używam sortBy wskazując na drugi argument, czyli ilość wystąpień,
+z wartością False, aby sortowanie występowało malejąco.
+
+Zadanie o ID = 0 wykonało się w dwóch częściach:
+1) Wykonanie zadania w Sparku
+2) Map&Reduce&Sort przetworzone z Pythona na zadanie dla Sparka
