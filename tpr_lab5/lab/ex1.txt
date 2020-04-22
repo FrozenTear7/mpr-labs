@@ -1,0 +1,386 @@
+Testing all
+
+static
+
+Calculations took: 0.000171s, for 10000 size and 1 threads
+Calculations took: 0.013739s, for 1000000 size and 1 threads
+Calculations took: 1.311889s, for 100000000 size and 1 threads
+
+
+Calculations took: 0.000375s, for 10000 size and 2 threads
+Calculations took: 0.029878s, for 1000000 size and 2 threads
+Calculations took: 2.853221s, for 100000000 size and 2 threads
+
+
+Calculations took: 0.000414s, for 10000 size and 3 threads
+Calculations took: 0.029355s, for 1000000 size and 3 threads
+Calculations took: 2.875716s, for 100000000 size and 3 threads
+
+
+Calculations took: 0.000433s, for 10000 size and 4 threads
+Calculations took: 0.030799s, for 1000000 size and 4 threads
+Calculations took: 2.895952s, for 100000000 size and 4 threads
+
+
+Calculations took: 0.000443s, for 10000 size and 5 threads
+Calculations took: 0.029395s, for 1000000 size and 5 threads
+Calculations took: 2.903742s, for 100000000 size and 5 threads
+
+
+Calculations took: 0.000514s, for 10000 size and 6 threads
+Calculations took: 0.029559s, for 1000000 size and 6 threads
+Calculations took: 2.909932s, for 100000000 size and 6 threads
+
+
+Calculations took: 0.000527s, for 10000 size and 7 threads
+Calculations took: 0.029295s, for 1000000 size and 7 threads
+Calculations took: 2.911927s, for 100000000 size and 7 threads
+
+
+Calculations took: 0.001259s, for 10000 size and 8 threads
+Calculations took: 0.029244s, for 1000000 size and 8 threads
+Calculations took: 2.907495s, for 100000000 size and 8 threads
+
+
+Calculations took: 0.000556s, for 10000 size and 9 threads
+Calculations took: 0.029727s, for 1000000 size and 9 threads
+Calculations took: 2.903247s, for 100000000 size and 9 threads
+
+
+Calculations took: 0.000563s, for 10000 size and 10 threads
+Calculations took: 0.029487s, for 1000000 size and 10 threads
+Calculations took: 2.897075s, for 100000000 size and 10 threads
+
+
+Calculations took: 0.000655s, for 10000 size and 11 threads
+Calculations took: 0.029467s, for 1000000 size and 11 threads
+Calculations took: 2.913545s, for 100000000 size and 11 threads
+
+
+Calculations took: 0.000620s, for 10000 size and 12 threads
+Calculations took: 0.029586s, for 1000000 size and 12 threads
+Calculations took: 2.913280s, for 100000000 size and 12 threads
+
+
+
+
+dynamic,4
+
+Calculations took: 0.000191s, for 10000 size and 1 threads
+Calculations took: 0.013735s, for 1000000 size and 1 threads
+Calculations took: 1.302040s, for 100000000 size and 1 threads
+
+
+Calculations took: 0.000370s, for 10000 size and 2 threads
+Calculations took: 0.029257s, for 1000000 size and 2 threads
+Calculations took: 2.867972s, for 100000000 size and 2 threads
+
+
+Calculations took: 0.000430s, for 10000 size and 3 threads
+Calculations took: 0.029372s, for 1000000 size and 3 threads
+Calculations took: 2.876352s, for 100000000 size and 3 threads
+
+
+Calculations took: 0.000460s, for 10000 size and 4 threads
+Calculations took: 0.029301s, for 1000000 size and 4 threads
+Calculations took: 2.889959s, for 100000000 size and 4 threads
+
+
+Calculations took: 0.000452s, for 10000 size and 5 threads
+Calculations took: 0.030094s, for 1000000 size and 5 threads
+Calculations took: 2.896579s, for 100000000 size and 5 threads
+
+
+Calculations took: 0.000477s, for 10000 size and 6 threads
+Calculations took: 0.029309s, for 1000000 size and 6 threads
+Calculations took: 2.890010s, for 100000000 size and 6 threads
+
+
+Calculations took: 0.000518s, for 10000 size and 7 threads
+Calculations took: 0.030786s, for 1000000 size and 7 threads
+Calculations took: 2.897679s, for 100000000 size and 7 threads
+
+
+Calculations took: 0.000537s, for 10000 size and 8 threads
+Calculations took: 0.030183s, for 1000000 size and 8 threads
+Calculations took: 2.907395s, for 100000000 size and 8 threads
+
+
+Calculations took: 0.000555s, for 10000 size and 9 threads
+Calculations took: 0.029475s, for 1000000 size and 9 threads
+Calculations took: 2.910638s, for 100000000 size and 9 threads
+
+
+Calculations took: 0.000610s, for 10000 size and 10 threads
+Calculations took: 0.030173s, for 1000000 size and 10 threads
+Calculations took: 2.911541s, for 100000000 size and 10 threads
+
+
+Calculations took: 0.000640s, for 10000 size and 11 threads
+Calculations took: 0.030218s, for 1000000 size and 11 threads
+Calculations took: 2.902183s, for 100000000 size and 11 threads
+
+
+Calculations took: 0.000632s, for 10000 size and 12 threads
+Calculations took: 0.029459s, for 1000000 size and 12 threads
+Calculations took: 2.919327s, for 100000000 size and 12 threads
+
+
+
+
+dynamic,8
+
+Calculations took: 0.000186s, for 10000 size and 1 threads
+Calculations took: 0.014629s, for 1000000 size and 1 threads
+Calculations took: 1.298609s, for 100000000 size and 1 threads
+
+
+Calculations took: 0.000386s, for 10000 size and 2 threads
+Calculations took: 0.029935s, for 1000000 size and 2 threads
+Calculations took: 2.867804s, for 100000000 size and 2 threads
+
+
+Calculations took: 0.000426s, for 10000 size and 3 threads
+Calculations took: 0.029355s, for 1000000 size and 3 threads
+Calculations took: 2.880117s, for 100000000 size and 3 threads
+
+
+Calculations took: 0.000416s, for 10000 size and 4 threads
+Calculations took: 0.029488s, for 1000000 size and 4 threads
+Calculations took: 2.812460s, for 100000000 size and 4 threads
+
+
+Calculations took: 0.000480s, for 10000 size and 5 threads
+Calculations took: 0.029368s, for 1000000 size and 5 threads
+Calculations took: 2.897158s, for 100000000 size and 5 threads
+
+
+Calculations took: 0.000508s, for 10000 size and 6 threads
+Calculations took: 0.029319s, for 1000000 size and 6 threads
+Calculations took: 2.904602s, for 100000000 size and 6 threads
+
+
+Calculations took: 0.000540s, for 10000 size and 7 threads
+Calculations took: 0.029532s, for 1000000 size and 7 threads
+Calculations took: 2.911903s, for 100000000 size and 7 threads
+
+
+Calculations took: 0.000530s, for 10000 size and 8 threads
+Calculations took: 0.030161s, for 1000000 size and 8 threads
+Calculations took: 2.895529s, for 100000000 size and 8 threads
+
+
+Calculations took: 0.000551s, for 10000 size and 9 threads
+Calculations took: 0.031928s, for 1000000 size and 9 threads
+Calculations took: 2.912137s, for 100000000 size and 9 threads
+
+
+Calculations took: 0.000598s, for 10000 size and 10 threads
+Calculations took: 0.029572s, for 1000000 size and 10 threads
+Calculations took: 2.912242s, for 100000000 size and 10 threads
+
+
+Calculations took: 0.000647s, for 10000 size and 11 threads
+Calculations took: 0.029499s, for 1000000 size and 11 threads
+Calculations took: 2.907048s, for 100000000 size and 11 threads
+
+
+Calculations took: 0.000632s, for 10000 size and 12 threads
+Calculations took: 0.030884s, for 1000000 size and 12 threads
+Calculations took: 2.913500s, for 100000000 size and 12 threads
+
+
+
+
+guided,4
+
+Calculations took: 0.000174s, for 10000 size and 1 threads
+Calculations took: 0.013702s, for 1000000 size and 1 threads
+Calculations took: 1.299512s, for 100000000 size and 1 threads
+
+
+Calculations took: 0.000372s, for 10000 size and 2 threads
+Calculations took: 0.029213s, for 1000000 size and 2 threads
+Calculations took: 2.869268s, for 100000000 size and 2 threads
+
+
+Calculations took: 0.000424s, for 10000 size and 3 threads
+Calculations took: 0.029314s, for 1000000 size and 3 threads
+Calculations took: 2.875914s, for 100000000 size and 3 threads
+
+
+Calculations took: 0.000436s, for 10000 size and 4 threads
+Calculations took: 0.030064s, for 1000000 size and 4 threads
+Calculations took: 2.891251s, for 100000000 size and 4 threads
+
+
+Calculations took: 0.000449s, for 10000 size and 5 threads
+Calculations took: 0.029289s, for 1000000 size and 5 threads
+Calculations took: 2.901213s, for 100000000 size and 5 threads
+
+
+Calculations took: 0.000480s, for 10000 size and 6 threads
+Calculations took: 0.029269s, for 1000000 size and 6 threads
+Calculations took: 2.897855s, for 100000000 size and 6 threads
+
+
+Calculations took: 0.000531s, for 10000 size and 7 threads
+Calculations took: 0.030154s, for 1000000 size and 7 threads
+Calculations took: 2.909101s, for 100000000 size and 7 threads
+
+
+Calculations took: 0.000524s, for 10000 size and 8 threads
+Calculations took: 0.029252s, for 1000000 size and 8 threads
+Calculations took: 2.904561s, for 100000000 size and 8 threads
+
+
+Calculations took: 0.000566s, for 10000 size and 9 threads
+Calculations took: 0.029249s, for 1000000 size and 9 threads
+Calculations took: 2.904035s, for 100000000 size and 9 threads
+
+
+Calculations took: 0.000603s, for 10000 size and 10 threads
+Calculations took: 0.029378s, for 1000000 size and 10 threads
+Calculations took: 2.900888s, for 100000000 size and 10 threads
+
+
+Calculations took: 0.000624s, for 10000 size and 11 threads
+Calculations took: 0.030260s, for 1000000 size and 11 threads
+Calculations took: 2.871922s, for 100000000 size and 11 threads
+
+
+Calculations took: 0.000643s, for 10000 size and 12 threads
+Calculations took: 0.029513s, for 1000000 size and 12 threads
+Calculations took: 2.909952s, for 100000000 size and 12 threads
+
+
+
+
+guided,12
+
+Calculations took: 0.000174s, for 10000 size and 1 threads
+Calculations took: 0.014747s, for 1000000 size and 1 threads
+Calculations took: 1.311721s, for 100000000 size and 1 threads
+
+
+Calculations took: 0.000377s, for 10000 size and 2 threads
+Calculations took: 0.029285s, for 1000000 size and 2 threads
+Calculations took: 2.864363s, for 100000000 size and 2 threads
+
+
+Calculations took: 0.000404s, for 10000 size and 3 threads
+Calculations took: 0.029186s, for 1000000 size and 3 threads
+Calculations took: 2.872957s, for 100000000 size and 3 threads
+
+
+Calculations took: 0.000466s, for 10000 size and 4 threads
+Calculations took: 0.029879s, for 1000000 size and 4 threads
+Calculations took: 2.883474s, for 100000000 size and 4 threads
+
+
+Calculations took: 0.000460s, for 10000 size and 5 threads
+Calculations took: 0.029355s, for 1000000 size and 5 threads
+Calculations took: 2.881276s, for 100000000 size and 5 threads
+
+
+Calculations took: 0.000519s, for 10000 size and 6 threads
+Calculations took: 0.029318s, for 1000000 size and 6 threads
+Calculations took: 2.890695s, for 100000000 size and 6 threads
+
+
+Calculations took: 0.000526s, for 10000 size and 7 threads
+Calculations took: 0.029444s, for 1000000 size and 7 threads
+Calculations took: 2.903458s, for 100000000 size and 7 threads
+
+
+Calculations took: 0.001207s, for 10000 size and 8 threads
+Calculations took: 0.032825s, for 1000000 size and 8 threads
+Calculations took: 2.907231s, for 100000000 size and 8 threads
+
+
+Calculations took: 0.000556s, for 10000 size and 9 threads
+Calculations took: 0.029845s, for 1000000 size and 9 threads
+Calculations took: 2.910608s, for 100000000 size and 9 threads
+
+
+Calculations took: 0.000582s, for 10000 size and 10 threads
+Calculations took: 0.029599s, for 1000000 size and 10 threads
+Calculations took: 2.911919s, for 100000000 size and 10 threads
+
+
+Calculations took: 0.000617s, for 10000 size and 11 threads
+Calculations took: 0.029519s, for 1000000 size and 11 threads
+Calculations took: 2.911270s, for 100000000 size and 11 threads
+
+
+Calculations took: 0.000655s, for 10000 size and 12 threads
+Calculations took: 0.029550s, for 1000000 size and 12 threads
+Calculations took: 2.893295s, for 100000000 size and 12 threads
+
+
+
+
+auto
+
+Calculations took: 0.000190s, for 10000 size and 1 threads
+Calculations took: 0.013786s, for 1000000 size and 1 threads
+Calculations took: 1.302280s, for 100000000 size and 1 threads
+
+
+Calculations took: 0.000399s, for 10000 size and 2 threads
+Calculations took: 0.029196s, for 1000000 size and 2 threads
+Calculations took: 2.856127s, for 100000000 size and 2 threads
+
+
+Calculations took: 0.000415s, for 10000 size and 3 threads
+Calculations took: 0.030025s, for 1000000 size and 3 threads
+Calculations took: 2.865471s, for 100000000 size and 3 threads
+
+
+Calculations took: 0.000434s, for 10000 size and 4 threads
+Calculations took: 0.029363s, for 1000000 size and 4 threads
+Calculations took: 2.891420s, for 100000000 size and 4 threads
+
+
+Calculations took: 0.000453s, for 10000 size and 5 threads
+Calculations took: 0.029439s, for 1000000 size and 5 threads
+Calculations took: 2.888989s, for 100000000 size and 5 threads
+
+
+Calculations took: 0.000514s, for 10000 size and 6 threads
+Calculations took: 0.029718s, for 1000000 size and 6 threads
+Calculations took: 2.909102s, for 100000000 size and 6 threads
+
+
+Calculations took: 0.000511s, for 10000 size and 7 threads
+Calculations took: 0.029299s, for 1000000 size and 7 threads
+Calculations took: 2.901018s, for 100000000 size and 7 threads
+
+
+Calculations took: 0.000549s, for 10000 size and 8 threads
+Calculations took: 0.029348s, for 1000000 size and 8 threads
+Calculations took: 2.906422s, for 100000000 size and 8 threads
+
+
+Calculations took: 0.000550s, for 10000 size and 9 threads
+Calculations took: 0.029411s, for 1000000 size and 9 threads
+Calculations took: 2.895598s, for 100000000 size and 9 threads
+
+
+Calculations took: 0.000608s, for 10000 size and 10 threads
+Calculations took: 0.029374s, for 1000000 size and 10 threads
+Calculations took: 2.921588s, for 100000000 size and 10 threads
+
+
+Calculations took: 0.000619s, for 10000 size and 11 threads
+Calculations took: 0.029971s, for 1000000 size and 11 threads
+Calculations took: 2.906988s, for 100000000 size and 11 threads
+
+
+Calculations took: 0.000710s, for 10000 size and 12 threads
+Calculations took: 0.029585s, for 1000000 size and 12 threads
+Calculations took: 2.913182s, for 100000000 size and 12 threads
+
+
+
+
