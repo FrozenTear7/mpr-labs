@@ -1,6 +1,4 @@
-gcc -Wall ex1.c -o ex1 -fopenmp -lm
-# ./ex1 10 10
-env OMP_NUM_THREADS=4 ./ex1 100 100
-# env OMP_NUM_THREADS=1 ./ex1 1000000 100000
-# env OMP_NUM_THREADS=2 ./ex1 1000000 100000
-# env OMP_NUM_THREADS=4 ./ex1 1000000 100000
+gcc -Wall ex1.c -o ex1 -fopenmp -lm -g
+env OMP_NUM_THREADS=1 ./ex1 1000000 100000
+env OMP_NUM_THREADS=2 ./ex1 1000000 100000
+env OMP_NUM_THREADS=4 ./ex1 1000000 100000
