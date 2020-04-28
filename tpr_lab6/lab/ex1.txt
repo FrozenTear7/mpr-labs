@@ -1,141 +1,161 @@
 Testing ex1
 
 N of threads: 1
-Populating the array took: 0.013736
-Splitting into buckets took: 0.021463
-Sorting the buckets took: 0.113553
-Merging into initial array took: 0.003578
+Populating the array took: 0.015153
+Splitting into buckets took: 0.023549
+Sorting the buckets took: 0.117366
+Merging into initial array took: 0.003750
+The whole algorithm took: 0.925795
 Array is sorted
 
 N of threads: 2
-Populating the array took: 0.021577
-Splitting into buckets took: 0.040914
-Sorting the buckets took: 0.112485
-Merging into initial array took: 0.003453
+Populating the array took: 0.022550
+Splitting into buckets took: 0.045048
+Sorting the buckets took: 0.119290
+Merging into initial array took: 0.003794
+The whole algorithm took: 0.879618
 Array is sorted
 
 N of threads: 3
-Populating the array took: 0.021335
-Splitting into buckets took: 0.052768
-Sorting the buckets took: 0.110885
-Merging into initial array took: 0.003645
+Populating the array took: 0.023071
+Splitting into buckets took: 0.061347
+Sorting the buckets took: 0.120388
+Merging into initial array took: 0.004135
+The whole algorithm took: 0.973760
 Array is sorted
 
 N of threads: 4
-Populating the array took: 0.021311
-Splitting into buckets took: 0.068009
-Sorting the buckets took: 0.114400
-Merging into initial array took: 0.003644
+Populating the array took: 0.023697
+Splitting into buckets took: 0.069137
+Sorting the buckets took: 0.115190
+Merging into initial array took: 0.003694
+The whole algorithm took: 0.885374
 Array is sorted
 
 N of threads: 5
-Populating the array took: 0.022595
-Splitting into buckets took: 0.081125
-Sorting the buckets took: 0.110169
-Merging into initial array took: 0.003510
+Populating the array took: 0.024535
+Splitting into buckets took: 0.082654
+Sorting the buckets took: 0.118258
+Merging into initial array took: 0.003889
+The whole algorithm took: 0.891189
 Array is sorted
 
 N of threads: 6
-Populating the array took: 0.020569
-Splitting into buckets took: 0.094162
-Sorting the buckets took: 0.114722
-Merging into initial array took: 0.003666
+Populating the array took: 0.023791
+Splitting into buckets took: 0.100440
+Sorting the buckets took: 0.119820
+Merging into initial array took: 0.003994
+The whole algorithm took: 0.911285
 Array is sorted
 
 N of threads: 7
-Populating the array took: 0.022724
-Splitting into buckets took: 0.106846
-Sorting the buckets took: 0.114133
-Merging into initial array took: 0.003658
+Populating the array took: 0.023271
+Splitting into buckets took: 0.110272
+Sorting the buckets took: 0.120995
+Merging into initial array took: 0.004075
+The whole algorithm took: 0.909093
 Array is sorted
 
 N of threads: 8
-Populating the array took: 0.021242
-Splitting into buckets took: 0.121013
-Sorting the buckets took: 0.114395
-Merging into initial array took: 0.003646
+Populating the array took: 0.024154
+Splitting into buckets took: 0.123240
+Sorting the buckets took: 0.119028
+Merging into initial array took: 0.004193
+The whole algorithm took: 0.933251
 Array is sorted
 
 N of threads: 9
-Populating the array took: 0.022180
-Splitting into buckets took: 0.128997
-Sorting the buckets took: 0.114143
-Merging into initial array took: 0.003743
+Populating the array took: 0.025215
+Splitting into buckets took: 0.134945
+Sorting the buckets took: 0.117761
+Merging into initial array took: 0.004053
+The whole algorithm took: 1.024607
 Array is sorted
 
 N of threads: 10
-Populating the array took: 0.022143
-Splitting into buckets took: 0.144820
-Sorting the buckets took: 0.108828
-Merging into initial array took: 0.003650
+Populating the array took: 0.024696
+Splitting into buckets took: 0.146031
+Sorting the buckets took: 0.115987
+Merging into initial array took: 0.003878
+The whole algorithm took: 1.034704
 Array is sorted
 
 N of threads: 11
-Populating the array took: 0.021518
-Splitting into buckets took: 0.159849
-Sorting the buckets took: 0.114143
-Merging into initial array took: 0.003989
+Populating the array took: 0.022819
+Splitting into buckets took: 0.167044
+Sorting the buckets took: 0.120980
+Merging into initial array took: 0.004213
+The whole algorithm took: 0.956652
 Array is sorted
 
 N of threads: 12
-Populating the array took: 0.022568
-Splitting into buckets took: 0.166330
-Sorting the buckets took: 0.111124
-Merging into initial array took: 0.003720
+Populating the array took: 0.023521
+Splitting into buckets took: 0.172436
+Sorting the buckets took: 0.116080
+Merging into initial array took: 0.003888
+The whole algorithm took: 1.016294
 Array is sorted
 
 N of threads: 13
-Populating the array took: 0.022481
-Splitting into buckets took: 0.185047
-Sorting the buckets took: 0.114022
-Merging into initial array took: 0.003937
+Populating the array took: 0.024458
+Splitting into buckets took: 0.183548
+Sorting the buckets took: 0.115886
+Merging into initial array took: 0.003934
+The whole algorithm took: 1.001044
 Array is sorted
 
 N of threads: 14
-Populating the array took: 0.021360
-Splitting into buckets took: 0.191093
-Sorting the buckets took: 0.112722
-Merging into initial array took: 0.003745
+Populating the array took: 0.022456
+Splitting into buckets took: 0.200251
+Sorting the buckets took: 0.117994
+Merging into initial array took: 0.004102
+The whole algorithm took: 1.024480
 Array is sorted
 
 N of threads: 15
-Populating the array took: 0.022830
-Splitting into buckets took: 0.209459
-Sorting the buckets took: 0.110541
-Merging into initial array took: 0.003639
+Populating the array took: 0.024764
+Splitting into buckets took: 0.208035
+Sorting the buckets took: 0.116426
+Merging into initial array took: 0.004090
+The whole algorithm took: 1.075738
 Array is sorted
 
 N of threads: 16
-Populating the array took: 0.022565
-Splitting into buckets took: 0.221065
-Sorting the buckets took: 0.113028
-Merging into initial array took: 0.003649
+Populating the array took: 0.025037
+Splitting into buckets took: 0.225439
+Sorting the buckets took: 0.119598
+Merging into initial array took: 0.004216
+The whole algorithm took: 1.055749
 Array is sorted
 
 N of threads: 17
-Populating the array took: 0.021438
-Splitting into buckets took: 0.237683
-Sorting the buckets took: 0.114420
-Merging into initial array took: 0.003788
+Populating the array took: 0.024768
+Splitting into buckets took: 0.240784
+Sorting the buckets took: 0.119072
+Merging into initial array took: 0.004158
+The whole algorithm took: 1.186828
 Array is sorted
 
 N of threads: 18
-Populating the array took: 0.021635
-Splitting into buckets took: 0.241864
-Sorting the buckets took: 0.113784
-Merging into initial array took: 0.003795
+Populating the array took: 0.023733
+Splitting into buckets took: 0.247484
+Sorting the buckets took: 0.119149
+Merging into initial array took: 0.004582
+The whole algorithm took: 1.042957
 Array is sorted
 
 N of threads: 19
-Populating the array took: 0.021749
-Splitting into buckets took: 0.263000
-Sorting the buckets took: 0.114920
-Merging into initial array took: 0.003808
+Populating the array took: 0.024162
+Splitting into buckets took: 0.260658
+Sorting the buckets took: 0.117939
+Merging into initial array took: 0.004310
+The whole algorithm took: 1.119449
 Array is sorted
 
 N of threads: 20
-Populating the array took: 0.021740
-Splitting into buckets took: 0.271933
-Sorting the buckets took: 0.114388
-Merging into initial array took: 0.003807
+Populating the array took: 0.025277
+Splitting into buckets took: 0.273945
+Sorting the buckets took: 0.117764
+Merging into initial array took: 0.003970
+The whole algorithm took: 1.094954
 Array is sorted

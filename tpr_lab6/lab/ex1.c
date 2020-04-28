@@ -32,7 +32,7 @@ Algorytm nie jest sekwencyjnie efektywny
 #include <omp.h>
 #include <math.h>
 
-double startTimer, endTimer;
+double startTimer, endTimer, startTotalTimer, endTotalTimer;
 
 // Struktura bucketa do trzymania danych i rozmiaru
 struct bucket
@@ -175,6 +175,7 @@ int main(int argc, char **argv)
     int *array = (int *)malloc(n * sizeof(int));
 
     startTimer = omp_get_wtime();
+    startTotalTimer = omp_get_wtime();
 
 #pragma omp parallel shared(array)
     {
@@ -192,6 +193,9 @@ int main(int argc, char **argv)
     printf("Populating the array took: %lf\n", endTimer - startTimer);
 
     bucketSort(array, n, maxRange);
+
+    endTotalTimer = omp_get_wtime();
+    printf("The whole algorithm took: %lf\n", endTotalTimer - startTotalTimer);
 
     // Sprawdzenie czy tablica jest posortowana
     sortCheck(array, n);
