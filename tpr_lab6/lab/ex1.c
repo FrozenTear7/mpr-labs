@@ -1,3 +1,31 @@
+/*
+Algorytm 1
+
+1) W tej wersji algorytmu nie ma potrzeby ochrony danych przy zapełnianiu kubełków, sortowaniu i wpisywaniu posortowanych danych
+do początkowej tablicy - w tym przypadku każdy wątek zajmuje się własnymi niezależnymi od reszty częściami.
+Konflikt natomiast następuje podczas odczytu danych z tablicy początkowej przez każdy z wątków, gdyż każdy wątek musi przejrzeć całą
+tablicę. Przykładowym rozwiązaniem problemu jest czytanie tablicy z różnych indeksów startowych przez każdy wątek.
+
+2) Złożoność algorytmu:
+n - rozmiar tablicy
+k - ilość kubełków, w tym przypadku wybrane sqrt(max_range) / n_threads
+
+O(n) - zapełnienie tablicy
+O(n) - podział danych do kubełków
+O(n*log(n)) - quicksort na kubełkach, O(n^2) pesymistycznie lub inny algorytm
+O(k) - merge kubełków
+
+Złożoność: O(n+k+n*log(n))
+
+Części które możemy zrównoleglić to:
+- wypełnienie tablicy danymi
+- podział danych do kubełków
+- sortowanie kubełków
+- merge kubełków do tablicy początkowej
+
+Algorytm nie jest sekwencyjnie efektywny
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -49,8 +77,11 @@ void bucketSort(int array[], int n, int maxRange)
     startTimer = omp_get_wtime();
 
 #pragma omp parallel private(i)
-    for (i = 0; i < n; i++)
+    for (i = 0 - omp_get_thread_num(); i < n; i++)
     {
+        if (i < 0)
+            continue;
+
         // Przydzielam wartość do bucketu biorac zakres wartości i ilości bucketów
         int bucketIndex = (double)array[i] / maxRange * maxBuckets;
 
@@ -68,9 +99,13 @@ void bucketSort(int array[], int n, int maxRange)
 
     // Sortowanie konkretnych bucketów przy pomocy np. quicksorta
 #pragma omp parallel private(i)
-    for (i = bucketsSize * omp_get_thread_num(); i <= bucketsSize * (omp_get_thread_num() + 1) - 1; i++)
     {
-        qsort(buckets[i].value, buckets[i].count, sizeof(int), &compareIntegers);
+        int startIndex = bucketsSize * omp_get_thread_num(), endIndex = bucketsSize * (omp_get_thread_num() + 1) - 1;
+
+        for (i = startIndex; i <= endIndex; i++)
+        {
+            qsort(buckets[i].value, buckets[i].count, sizeof(int), &compareIntegers);
+        }
     }
 
     endTimer = omp_get_wtime();
@@ -88,8 +123,10 @@ void bucketSort(int array[], int n, int maxRange)
             offset += buckets[i].count;
         }
 
+        int startIndex = bucketsSize * omp_get_thread_num(), endIndex = bucketsSize * (omp_get_thread_num() + 1) - 1;
+
         // Thread wypełnia od punktu startowego równego rozmiarom poprzednich bucketów przechodząc przez swoje buckety
-        for (k = offset, i = omp_get_thread_num() * bucketsSize; i <= bucketsSize * (omp_get_thread_num() + 1) - 1; i++)
+        for (k = offset, i = startIndex; i <= endIndex; i++)
         {
             for (j = 0; j < buckets[i].count; j++)
             {
@@ -111,11 +148,27 @@ void bucketSort(int array[], int n, int maxRange)
     free(buckets);
 }
 
+void sortCheck(int array[], int n)
+{
+    int i;
+
+    for (i = 0; i < n - 1; i++)
+    {
+        if (array[i] > array[i + 1])
+        {
+            printf("Array is not sorted\n");
+            return;
+        }
+    }
+
+    printf("Array is sorted\n");
+}
+
 int main(int argc, char **argv)
 {
-    time_t t;
-    srand((unsigned)time(&t));
+    printf("\nN of threads: %d\n", omp_get_max_threads());
 
+    int i;
     int n = atoi(argv[1]);
     int maxRange = atoi(argv[2]);
 
@@ -123,17 +176,25 @@ int main(int argc, char **argv)
 
     startTimer = omp_get_wtime();
 
-    int i;
-    // Wypełnianie tablicy losowymi danymi w zakresie podanym w argumentach programu
-    for (i = 0; i < n; i++)
+#pragma omp parallel shared(array)
     {
-        array[i] = rand() % maxRange;
+        srand((unsigned)(time(NULL)) ^ omp_get_thread_num());
+
+#pragma omp for
+        // Wypełnianie tablicy losowymi danymi w zakresie podanym w argumentach programu
+        for (i = 0; i < n; i++)
+        {
+            array[i] = rand() % maxRange;
+        }
     }
 
     endTimer = omp_get_wtime();
     printf("Populating the array took: %lf\n", endTimer - startTimer);
 
     bucketSort(array, n, maxRange);
+
+    // Sprawdzenie czy tablica jest posortowana
+    sortCheck(array, n);
 
     // for (i = 0; i < n; i++)
     // {
