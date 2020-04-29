@@ -1,31 +1,3 @@
-/*
-Algorytm 1
-
-1) W tej wersji algorytmu nie ma potrzeby ochrony danych przy zapełnianiu kubełków, sortowaniu i wpisywaniu posortowanych danych
-do początkowej tablicy - w tym przypadku każdy wątek zajmuje się własnymi niezależnymi od reszty częściami.
-Konflikt natomiast następuje podczas odczytu danych z tablicy początkowej przez każdy z wątków, gdyż każdy wątek musi przejrzeć całą
-tablicę. Przykładowym rozwiązaniem problemu jest czytanie tablicy z różnych indeksów startowych przez każdy wątek.
-
-2) Złożoność algorytmu:
-n - rozmiar tablicy
-k - ilość kubełków, w tym przypadku wybrane sqrt(max_range) / n_threads
-
-O(n) - zapełnienie tablicy
-O(n) - podział danych do kubełków
-O(n*log(n)) - quicksort na kubełkach, O(n^2) pesymistycznie lub inny algorytm
-O(k) - merge kubełków
-
-Złożoność: O(n+k+n*log(n))
-
-Części które możemy zrównoleglić to:
-- wypełnienie tablicy danymi
-- podział danych do kubełków
-- sortowanie kubełków
-- merge kubełków do tablicy początkowej
-
-Algorytm nie jest sekwencyjnie efektywny
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -59,22 +31,9 @@ int compareIntegers(const void *first, const void *second)
     }
 }
 
-void bucketSort(int array[], int n, int maxRange)
+void splitToBuckets(int array[], int n, int maxRange, struct bucket buckets[], int bucketsSize, int maxBuckets)
 {
-    int i, j, k;
-    // Przykładowy rozkład danych do bucketów
-    int bucketsSize = sqrt(n) / omp_get_max_threads();
-    int maxBuckets = bucketsSize * omp_get_max_threads();
-
-    // Inicjalizacja bucketów i ich tablic danych
-    struct bucket *buckets = (struct bucket *)malloc(sizeof(struct bucket) * maxBuckets);
-    for (i = 0; i < maxBuckets; i++)
-    {
-        buckets[i].count = 0;
-        buckets[i].value = (int *)malloc(sizeof(int) * n);
-    }
-
-    startTimer = omp_get_wtime();
+    int i;
 
 #pragma omp parallel private(i)
     for (i = 0 - omp_get_thread_num(); i < n; i++)
@@ -91,13 +50,12 @@ void bucketSort(int array[], int n, int maxRange)
             buckets[bucketIndex].value[buckets[bucketIndex].count++] = array[i];
         }
     }
+}
 
-    endTimer = omp_get_wtime();
-    printf("Splitting into buckets took: %lf\n", endTimer - startTimer);
+void sortBuckets(int array[], struct bucket buckets[], int bucketsSize)
+{
+    int i;
 
-    startTimer = omp_get_wtime();
-
-    // Sortowanie konkretnych bucketów przy pomocy np. quicksorta
 #pragma omp parallel private(i)
     {
         int startIndex = bucketsSize * omp_get_thread_num(), endIndex = bucketsSize * (omp_get_thread_num() + 1) - 1;
@@ -107,11 +65,11 @@ void bucketSort(int array[], int n, int maxRange)
             qsort(buckets[i].value, buckets[i].count, sizeof(int), &compareIntegers);
         }
     }
+}
 
-    endTimer = omp_get_wtime();
-    printf("Sorting the buckets took: %lf\n", endTimer - startTimer);
-
-    startTimer = omp_get_wtime();
+void mergeBuckets(int array[], struct bucket buckets[], int bucketsSize)
+{
+    int i, j, k;
 
 #pragma omp parallel private(i, j, k)
     {
@@ -135,6 +93,41 @@ void bucketSort(int array[], int n, int maxRange)
             k += buckets[i].count;
         }
     }
+}
+
+void bucketSort(int array[], int n, int maxRange)
+{
+    int i;
+    // Przykładowy rozkład danych do bucketów
+    int bucketsSize = sqrt(n) / omp_get_max_threads();
+    int maxBuckets = bucketsSize * omp_get_max_threads();
+
+    // Inicjalizacja bucketów i ich tablic danych
+    struct bucket *buckets = (struct bucket *)malloc(sizeof(struct bucket) * maxBuckets);
+    for (i = 0; i < maxBuckets; i++)
+    {
+        buckets[i].count = 0;
+        buckets[i].value = (int *)malloc(sizeof(int) * n);
+    }
+
+    startTimer = omp_get_wtime();
+
+    splitToBuckets(array, n, maxRange, buckets, bucketsSize, maxBuckets);
+
+    endTimer = omp_get_wtime();
+    printf("Splitting into buckets took: %lf\n", endTimer - startTimer);
+
+    startTimer = omp_get_wtime();
+
+    // Sortowanie konkretnych bucketów przy pomocy np. quicksorta
+    sortBuckets(array, buckets, bucketsSize);
+
+    endTimer = omp_get_wtime();
+    printf("Sorting the buckets took: %lf\n", endTimer - startTimer);
+
+    startTimer = omp_get_wtime();
+
+    mergeBuckets(array, buckets, bucketsSize);
 
     endTimer = omp_get_wtime();
     printf("Merging into initial array took: %lf\n", endTimer - startTimer);
@@ -164,18 +157,9 @@ void sortCheck(int array[], int n)
     printf("Array is sorted\n");
 }
 
-int main(int argc, char **argv)
+void populateArray(int array[], int n, int maxRange)
 {
-    printf("\nN of threads: %d\n", omp_get_max_threads());
-
     int i;
-    int n = atoi(argv[1]);
-    int maxRange = atoi(argv[2]);
-
-    int *array = (int *)malloc(n * sizeof(int));
-
-    startTimer = omp_get_wtime();
-    startTotalTimer = omp_get_wtime();
 
 #pragma omp parallel shared(array)
     {
@@ -188,6 +172,21 @@ int main(int argc, char **argv)
             array[i] = rand() % maxRange;
         }
     }
+}
+
+int main(int argc, char **argv)
+{
+    printf("\nN of threads: %d\n", omp_get_max_threads());
+
+    int n = atoi(argv[1]);
+    int maxRange = atoi(argv[2]);
+
+    int *array = (int *)malloc(n * sizeof(int));
+
+    startTimer = omp_get_wtime();
+    startTotalTimer = omp_get_wtime();
+
+    populateArray(array, n, maxRange);
 
     endTimer = omp_get_wtime();
     printf("Populating the array took: %lf\n", endTimer - startTimer);
@@ -199,6 +198,8 @@ int main(int argc, char **argv)
 
     // Sprawdzenie czy tablica jest posortowana
     sortCheck(array, n);
+
+    // int i;
 
     // for (i = 0; i < n; i++)
     // {
