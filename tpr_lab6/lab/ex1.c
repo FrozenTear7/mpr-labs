@@ -1,3 +1,9 @@
+/*
+Kompilacja i przykładowe uruchomienie (ilość wątków przekazuję przez env):
+gcc -Wall ex1.c -o ex1 -fopenmp -lm
+env OMP_NUM_THREADS=4 ./ex1 1000000 10000
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -160,16 +166,20 @@ void sortCheck(int array[], int n)
 void populateArray(int array[], int n, int maxRange)
 {
     int i;
+    unsigned short xi[3];
 
-#pragma omp parallel shared(array)
+#pragma omp parallel private(xi)
     {
-        srand((unsigned)(time(NULL)) ^ omp_get_thread_num());
+        unsigned threadSeed = (unsigned)(time(NULL)) ^ omp_get_thread_num();
+        xi[0] = threadSeed;
+        xi[1] = threadSeed;
+        xi[2] = threadSeed;
 
 #pragma omp for
         // Wypełnianie tablicy losowymi danymi w zakresie podanym w argumentach programu
         for (i = 0; i < n; i++)
         {
-            array[i] = rand() % maxRange;
+            array[i] = (int)(erand48(xi) * maxRange);
         }
     }
 }
