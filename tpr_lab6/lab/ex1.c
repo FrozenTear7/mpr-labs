@@ -39,21 +39,22 @@ int compareIntegers(const void *first, const void *second)
 
 void splitToBuckets(int array[], int n, int maxRange, struct bucket buckets[], int bucketsSize, int maxBuckets)
 {
-    int i;
+    int i, indexCounter, startIndex;
 
-#pragma omp parallel private(i)
-    for (i = 0 - omp_get_thread_num(); i < n; i++)
+#pragma omp parallel private(i, indexCounter, startIndex)
     {
-        if (i < 0)
-            continue;
+        startIndex = (double)omp_get_thread_num() / omp_get_max_threads() * n;
 
-        // Przydzielam wartość do bucketu biorac zakres wartości i ilości bucketów
-        int bucketIndex = (double)array[i] / maxRange * maxBuckets;
-
-        // Thread rozpatrza wartości tylko w zakresie swoich bucketów
-        if (bucketIndex >= bucketsSize * omp_get_thread_num() && bucketIndex <= bucketsSize * (omp_get_thread_num() + 1) - 1)
+        for (i = startIndex, indexCounter = 0; indexCounter < n; i++, indexCounter++)
         {
-            buckets[bucketIndex].value[buckets[bucketIndex].count++] = array[i];
+            // Przydzielam wartość do bucketu biorac zakres wartości i ilości bucketów
+            int bucketIndex = (double)array[i % n] / maxRange * maxBuckets;
+
+            // Thread rozpatrza wartości tylko w zakresie swoich bucketów
+            if (bucketIndex >= bucketsSize * omp_get_thread_num() && bucketIndex <= bucketsSize * (omp_get_thread_num() + 1) - 1)
+            {
+                buckets[bucketIndex].value[buckets[bucketIndex].count++] = array[i % n];
+            }
         }
     }
 }
