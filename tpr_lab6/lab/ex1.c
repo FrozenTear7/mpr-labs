@@ -37,9 +37,8 @@ int compareIntegers(const void *first, const void *second)
     }
 }
 
-void splitToBuckets(int array[], int n, int maxRange, struct bucket buckets[], int bucketsSize, int maxBuckets)
+void splitToBuckets(int array[], int n, int maxRange, struct bucket buckets[], int bucketsSize)
 {
-
 #pragma omp parallel
     {
         int startIndex = (double)omp_get_thread_num() / omp_get_max_threads() * n;
@@ -48,10 +47,12 @@ void splitToBuckets(int array[], int n, int maxRange, struct bucket buckets[], i
         for (i = startIndex, indexCounter = 0; indexCounter < n; i++, indexCounter++)
         {
             // Przydzielam wartość do bucketu biorac zakres wartości i ilości bucketów
-            int bucketIndex = (double)array[i % n] / maxRange * maxBuckets;
+            int bucketIndex = (double)array[i % n] / maxRange * bucketsSize;
+            int startBucketIndex = ceil((double)omp_get_thread_num() / omp_get_max_threads() * bucketsSize);
+            int endBucketIndex = ceil((double)(omp_get_thread_num() + 1) / omp_get_max_threads() * bucketsSize - 1);
 
             // Thread rozpatrza wartości tylko w zakresie swoich bucketów
-            if (bucketIndex >= bucketsSize * omp_get_thread_num() && bucketIndex <= bucketsSize * (omp_get_thread_num() + 1) - 1)
+            if (bucketIndex >= startBucketIndex && bucketIndex <= endBucketIndex)
             {
                 buckets[bucketIndex].value[buckets[bucketIndex].count++] = array[i % n];
             }
@@ -63,7 +64,9 @@ void sortBuckets(int array[], struct bucket buckets[], int bucketsSize)
 {
 #pragma omp parallel
     {
-        int startIndex = bucketsSize * omp_get_thread_num(), endIndex = bucketsSize * (omp_get_thread_num() + 1) - 1;
+        int startIndex = ceil((double)omp_get_thread_num() / omp_get_max_threads() * bucketsSize);
+        int endIndex = ceil((double)(omp_get_thread_num() + 1) / omp_get_max_threads() * bucketsSize - 1);
+
         int i;
 
         for (i = startIndex; i <= endIndex; i++)
@@ -81,13 +84,13 @@ void mergeBuckets(int array[], struct bucket buckets[], int bucketsSize)
 
         // Obliczanie punktu startowego od którego thread ma wypełniać tablicę posortowanymi danymi
         int offset = 0;
+        int startIndex = ceil((double)omp_get_thread_num() / omp_get_max_threads() * bucketsSize);
+        int endIndex = ceil((double)(omp_get_thread_num() + 1) / omp_get_max_threads() * bucketsSize - 1);
 
-        for (i = 0; i < omp_get_thread_num() * bucketsSize; i++)
+        for (i = 0; i < startIndex; i++)
         {
             offset += buckets[i].count;
         }
-
-        int startIndex = bucketsSize * omp_get_thread_num(), endIndex = bucketsSize * (omp_get_thread_num() + 1) - 1;
 
         // Thread wypełnia od punktu startowego równego rozmiarom poprzednich bucketów przechodząc przez swoje buckety
         for (k = offset, i = startIndex; i <= endIndex; i++)
@@ -101,16 +104,13 @@ void mergeBuckets(int array[], struct bucket buckets[], int bucketsSize)
     }
 }
 
-void bucketSort(int array[], int n, int maxRange)
+void bucketSort(int array[], int n, int maxRange, int bucketsSize)
 {
     int i;
-    // Przykładowy rozkład danych do bucketów
-    int bucketsSize = sqrt(n) / omp_get_max_threads();
-    int maxBuckets = bucketsSize * omp_get_max_threads();
 
     // Inicjalizacja bucketów i ich tablic danych
-    struct bucket *buckets = (struct bucket *)malloc(sizeof(struct bucket) * maxBuckets);
-    for (i = 0; i < maxBuckets; i++)
+    struct bucket *buckets = (struct bucket *)malloc(sizeof(struct bucket) * bucketsSize);
+    for (i = 0; i < bucketsSize; i++)
     {
         buckets[i].count = 0;
         buckets[i].value = (int *)malloc(sizeof(int) * n);
@@ -118,7 +118,7 @@ void bucketSort(int array[], int n, int maxRange)
 
     startTimer = omp_get_wtime();
 
-    splitToBuckets(array, n, maxRange, buckets, bucketsSize, maxBuckets);
+    splitToBuckets(array, n, maxRange, buckets, bucketsSize);
 
     endTimer = omp_get_wtime();
     printf("Splitting into buckets took: %lf\n", endTimer - startTimer);
@@ -139,7 +139,7 @@ void bucketSort(int array[], int n, int maxRange)
     printf("Merging into initial array took: %lf\n", endTimer - startTimer);
 
     // Czyszczenie
-    for (i = 0; i < maxBuckets; i++)
+    for (i = 0; i < bucketsSize; i++)
     {
         free(buckets[i].value);
     }
@@ -190,6 +190,13 @@ int main(int argc, char **argv)
 
     int n = atoi(argv[1]);
     int maxRange = atoi(argv[2]);
+    int bucketsSize = atoi(argv[3]);
+
+    if (bucketsSize < omp_get_max_threads())
+    {
+        printf("Please provide more buckets than threads\n");
+        return -1;
+    }
 
     int *array = (int *)malloc(n * sizeof(int));
 
@@ -201,7 +208,7 @@ int main(int argc, char **argv)
     endTimer = omp_get_wtime();
     printf("Populating the array took: %lf\n", endTimer - startTimer);
 
-    bucketSort(array, n, maxRange);
+    bucketSort(array, n, maxRange, bucketsSize);
 
     endTotalTimer = omp_get_wtime();
     printf("The whole algorithm took: %lf\n", endTotalTimer - startTotalTimer);
