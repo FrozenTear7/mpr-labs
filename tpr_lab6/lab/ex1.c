@@ -39,11 +39,11 @@ int compareIntegers(const void *first, const void *second)
 
 void splitToBuckets(int array[], int n, int maxRange, struct bucket buckets[], int bucketsSize, int maxBuckets)
 {
-    int i, indexCounter, startIndex;
 
-#pragma omp parallel private(i, indexCounter, startIndex)
+#pragma omp parallel
     {
-        startIndex = (double)omp_get_thread_num() / omp_get_max_threads() * n;
+        int startIndex = (double)omp_get_thread_num() / omp_get_max_threads() * n;
+        int i, indexCounter;
 
         for (i = startIndex, indexCounter = 0; indexCounter < n; i++, indexCounter++)
         {
@@ -61,11 +61,10 @@ void splitToBuckets(int array[], int n, int maxRange, struct bucket buckets[], i
 
 void sortBuckets(int array[], struct bucket buckets[], int bucketsSize)
 {
-    int i;
-
-#pragma omp parallel private(i)
+#pragma omp parallel
     {
         int startIndex = bucketsSize * omp_get_thread_num(), endIndex = bucketsSize * (omp_get_thread_num() + 1) - 1;
+        int i;
 
         for (i = startIndex; i <= endIndex; i++)
         {
@@ -76,10 +75,10 @@ void sortBuckets(int array[], struct bucket buckets[], int bucketsSize)
 
 void mergeBuckets(int array[], struct bucket buckets[], int bucketsSize)
 {
-    int i, j, k;
-
-#pragma omp parallel private(i, j, k)
+#pragma omp parallel
     {
+        int i, j, k;
+
         // Obliczanie punktu startowego od którego thread ma wypełniać tablicę posortowanymi danymi
         int offset = 0;
 
