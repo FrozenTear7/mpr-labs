@@ -1,0 +1,5 @@
+range - zakres losowanych wartosci (0; range)
+
+range = 1000
+threads = 4
+

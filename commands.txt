@@ -1,0 +1,4 @@
+Prometeusz:
+
+srun -p plgrid -N 1 -n 4 -A lemkingpu2 --time 1:00:00 --pty /bin/bash -l
+module add plgrid/tools/openmpi
