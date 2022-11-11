@@ -5,5 +5,5 @@ setup(
     version='0.1',
     packages=['mpr'],
     author='MPR',
-    install_requires=['pyspark==2.4.5']
+    install_requires=['pyspark==3.2.2']
 )
